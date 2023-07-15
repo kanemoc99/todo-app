@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import type { ChangeEvent } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+  const App = () => {
+  const [value, setValue] = useState("");
+  const [text, setText] = useState("");
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.currentTarget.value)
+  }
+
+  const handleClick = () => {
+    setText(value); 
+    setValue(""); 
+  }
+
+  console.log('コンポーネントの再描画が発生しているかどうかのチェック')
+
+
+    return (
+      <div className="App">
+        <form>        
+        <input type="text"  value={value} onChange={handleChange}/>
+        <button type="button" onClick={handleClick}>追加</button>        
+        <p>{text}</p>
+        </form>
+      </div>
+    );
+  };
 
 export default App;
