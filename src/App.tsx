@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { ChangeEvent } from 'react';
-
+import { Button, Container, List, ListItem, ListItemButton, ListItemText, TextField, } from '@mui/material'
+import Stack from '@mui/material/Stack';
 
 const App = () => {
 
@@ -24,14 +25,20 @@ const App = () => {
   return (
     <div className="App">
       <form>
-        <input type="text" value={value} onChange={handleChange} />
-        <button type="button" onClick={addTodo}>追加</button>
-        <ul>
-          {text.map((value, i) => {
-            return (
-              <li key={i}>{value}</li>)
-          })}
-        </ul>
+        <Container fixed>
+          <Stack>
+            <TextField value={value} onChange={handleChange} />
+            <button type="button" onClick={addTodo}>追加</button>
+            <List>
+              <ul>
+                {text.map((value, i) => {
+                  return (
+                    <li key={i}>{value}</li>)
+                })}
+              </ul>
+            </List>
+          </Stack>
+        </Container>
       </form>
     </div>
   );
